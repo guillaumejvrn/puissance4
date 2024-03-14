@@ -1,5 +1,5 @@
-import java.util.Scanner;
 public class Puissance4 {
+
     public static void main(String[] args) {
         Grille grille = new Grille(6, 7);
         Joueur joueur1 = new Humain('X');
@@ -19,6 +19,10 @@ public class Puissance4 {
                 if (grille.verifierVictoire(joueurActuel.getJeton())) {
                     grille.afficherGrille();
                     System.out.println("Le joueur " + joueurActuel.getJeton() + " a gagné !");
+                    break;
+                } else if (grille.estGrillePleine()) {
+                    grille.afficherGrille();
+                    System.out.println("Match nul !");
                     break;
                 }
                 joueurActuel = (joueurActuel == joueur1) ? joueur2 : joueur1;

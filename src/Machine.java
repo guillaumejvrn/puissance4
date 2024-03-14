@@ -1,4 +1,3 @@
-import java.util.Scanner;
 class Machine extends Joueur {
     public Machine(char jeton) {
         super(jeton);
@@ -6,7 +5,11 @@ class Machine extends Joueur {
 
     @Override
     public int jouerCoup() {
-        // Stratégie simple : jouer aléatoirement dans une colonne valide
-        return (int) (Math.random() * 7);
+        Grille grilleTemp = new Grille(6, 7);
+        int colonne;
+        do {
+            colonne = (int) (Math.random() * 7);
+        } while (!grilleTemp.estColonneValide(colonne));
+        return colonne;
     }
 }

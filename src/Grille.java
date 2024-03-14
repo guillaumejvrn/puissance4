@@ -84,4 +84,13 @@ class Grille {
         }
         return false;
     }
+    public boolean estGrillePleine() {
+        for (int j = 0; j < colonnes; j++) {
+            if (grille[0][j] == vide) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

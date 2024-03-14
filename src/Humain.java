@@ -8,7 +8,6 @@ class Humain extends Joueur {
     public int jouerCoup() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Entrez le numéro de la colonne (0-6) : ");
-        int colonne = scanner.nextInt();
-        return colonne;
+        return scanner.nextInt();
     }
 }
