@@ -1,23 +1,16 @@
 import java.util.Scanner;
+class Joueur {
+    protected char jeton;
 
-public class Joueur {
-    //creation des attributs
-    private String nom;
-    private String symbole;
-
-    //creation du constructeur
-    public Joueur(String nom, String symbole){
-        this.nom = nom;
-        this.symbole = symbole;
+    public Joueur(char jeton) {
+        this.jeton = jeton;
     }
 
-    //creation des methodes
-    public String getNom(){
-        return this.nom;
-    }
-    public String getSymbole(){
-        return this.symbole;
+    public char getJeton() {
+        return jeton;
     }
 
-
+    public int jouerCoup() {
+        return -1; // Méthode à redéfinir dans les classes filles
+    }
 }

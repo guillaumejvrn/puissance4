@@ -1,36 +1,30 @@
 import java.util.Scanner;
-
 public class Puissance4 {
-
     public static void main(String[] args) {
+        Grille grille = new Grille(6, 7);
+        Joueur joueur1 = new Humain('X');
+        Joueur joueur2 = new Machine('O');
+        Joueur joueurActuel = joueur1;
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Entrez le nom du joueur 1 : ");
-        String nom1 = sc.nextLine();
-        System.out.println("Entrez le symbole du joueur 1 : ");
-        String symbole1 = sc.nextLine();
-        Joueur joueur1 = new Joueur(nom1, symbole1);
+        System.out.println("Bienvenue dans le jeu Puissance 4 !");
 
-        System.out.println("Entrez le nom du joueur 2 : ");
-        String nom2 = sc.nextLine();
-        System.out.println("Entrez le symbole du joueur 2 : ");
-        String symbole2 = sc.nextLine();
-        Joueur joueur2 = new Joueur(nom2, symbole2);
+        while (true) {
+            grille.afficherGrille();
+            System.out.println("Joueur " + joueurActuel.getJeton() + " - Votre tour :");
 
+            int colonne = joueurActuel.jouerCoup();
 
-        boolean fin = false;
-
-        while (fin == false){
-            for (int i = 0; i < 6; i++) {
-                for (int k = 0; k < 8; k++) {
-                    System.out.print("|");
-                    System.out.print(" ");
+            if (grille.estColonneValide(colonne)) {
+                grille.placerJeton(colonne, joueurActuel.getJeton());
+                if (grille.verifierVictoire(joueurActuel.getJeton())) {
+                    grille.afficherGrille();
+                    System.out.println("Le joueur " + joueurActuel.getJeton() + " a gagné !");
+                    break;
                 }
-                System.out.println();
+                joueurActuel = (joueurActuel == joueur1) ? joueur2 : joueur1;
+            } else {
+                System.out.println("Colonne invalide. Réessayez !");
             }
-            fin = true;
         }
-
-        System.out.println("le joueur " + " a gagné");
     }
 }
