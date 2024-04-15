@@ -21,9 +21,9 @@ class Grille {
     public void afficherGrille() {
         for (int i = 0; i < lignes; i++) {
             for (int j = 0; j < colonnes; j++) {
-                System.out.print(grille[i][j] + " ");
+                System.out.print("|" + grille[i][j]);
             }
-            System.out.println();
+            System.out.println("|");
         }
     }
 
